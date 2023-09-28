@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import Header from './Header.vue';
 import VideoCard from './VideoCard.vue';
-
-defineProps<{ msg: string }>()
 
 const count = ref(0)
 </script>
 
 <template>
-    <h1>{{ msg }}</h1>
+    <Header />
 
     <div class="videos-container">
         <VideoCard />
