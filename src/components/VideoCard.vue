@@ -1,10 +1,25 @@
 <script setup lang="ts">
+import { useModal } from 'vue-final-modal';
 import RemoveButton from "./RemoveButton.vue";
+import ConfirmModal from "./modals/ConfirmModal.vue";
+
+
+const { open, close } = useModal({
+    component: ConfirmModal,
+    attrs: {
+        onConfirm() {
+            close()
+        },
+    },
+    slots: {
+        default: '<h1>Are you sure you want to remove this video</h1>',
+    },
+});
 </script>
 
 <template>
     <div class="video-card">
-        <RemoveButton />
+        <RemoveButton @click="() => open()" />
     </div>
 </template>
 
