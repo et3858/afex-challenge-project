@@ -1,20 +1,38 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useModal } from 'vue-final-modal';
+
 import Header from './Header.vue';
 import VideoCard from './VideoCard.vue';
+import VideoDetailsModal from "./modals/VideoDetailsModal.vue";
 
-const count = ref(0)
+
+const count = ref(0);
+const VIDEO_CARDS = Array.from(Array(5));
+
+
+const { open, close } = useModal({
+    component: VideoDetailsModal,
+    attrs: {
+        title: 'Hello World!',
+        onConfirm() {
+            close()
+        },
+    },
+    slots: {
+        default: '<p>UseModal: The content of the modal</p>',
+    },
+});
+
 </script>
 
 <template>
     <Header />
 
     <div class="videos-container">
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
+        <template v-for="(e, key) in VIDEO_CARDS" :key="key">
+            <VideoCard @click="() => open()" />
+        </template>
     </div>
 </template>
 
