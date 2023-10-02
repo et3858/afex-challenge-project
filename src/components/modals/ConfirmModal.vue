@@ -4,14 +4,18 @@ import { VueFinalModal } from 'vue-final-modal';
 
 interface IProps {
     title?: string,
+    confirmButtonText?: string,
 };
 
 
-defineProps<IProps>();
+withDefaults(defineProps<IProps>(), {
+    confirmButtonText: "Confirm",
+});
 
 
 const emit = defineEmits<{
-    (e: 'confirm'): void
+    (e: 'cancel'): void,
+    (e: 'confirm'): void,
 }>()
 </script>
 
@@ -25,8 +29,8 @@ const emit = defineEmits<{
         <slot />
 
         <div class="buttons-container">
-            <button type="button" class="cancel-button" @click="emit('confirm')">Cancel</button>
-            <button type="button" class="confirm-button" @click="emit('confirm')">Remove</button>
+            <button type="button" class="cancel-button" @click="emit('cancel')">Cancel</button>
+            <button type="button" class="confirm-button" @click="emit('confirm')">{{ confirmButtonText }}</button>
         </div>
     </VueFinalModal>
 </template>

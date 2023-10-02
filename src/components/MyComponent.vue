@@ -9,6 +9,7 @@ import { useModal } from 'vue-final-modal';
 import Header from './Header.vue';
 import VideoCard from './VideoCard.vue';
 import VideoDetailsModal from "./modals/VideoDetailsModal.vue";
+import ConfirmModal from "./modals/ConfirmModal.vue";
 
 import type { Video } from "./../types";
 
@@ -37,10 +38,43 @@ const { open, close } = useModal({
 });
 
 
+const { open: open2, close: close2 } = useModal({
+    component: ConfirmModal,
+    attrs: {
+        confirmButtonText: "Remove",
+        onConfirm() {
+            removeVideo();
+            close2();
+        },
+        onCancel() {
+            close2();
+        },
+        onClosed() {
+            selectedVideo.value = {};
+        },
+    },
+    slots: {
+        default: '<h1>Are you sure you want to remove this video</h1>',
+    },
+});
+
+
+const removeVideo = () => {
+    videos.value = videos.value.filter(v => {
+        return v.id !== selectedVideo.value.id;
+    });
+};
+
 
 const handleOpenVideoClick = (video: Video) => {
     selectedVideo.value = video;
     open();
+};
+
+
+const handleConfirmRemoveVideoClick = (video: Video) => {
+    selectedVideo.value = video;
+    open2();
 };
 
 const fetchVideos = () => {
@@ -79,7 +113,8 @@ const handleAddVideo = (video: Video) => {
         <template v-for="video in videos" :key="video.id">
             <VideoCard
                 :video="video"
-                @click="() => handleOpenVideoClick(video)"
+                :click="() => handleOpenVideoClick(video)"
+                :removeClick="() => handleConfirmRemoveVideoClick(video)"
             />
         </template>
     </div>
