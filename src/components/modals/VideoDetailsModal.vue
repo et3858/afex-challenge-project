@@ -1,18 +1,23 @@
 <script setup lang="ts">
 import { VueFinalModal } from 'vue-final-modal';
 
+import type { Video } from "./../../types";
+
 
 interface IProps {
     title?: string,
+    video: Video,
 };
 
 
-defineProps<IProps>();
+const props = defineProps<IProps>();
 
 
 const emit = defineEmits<{
-  (e: 'confirm'): void
-}>()
+    (e: 'confirm'): void
+}>();
+
+console.log(props.video)
 </script>
 
 <template>
@@ -31,12 +36,14 @@ const emit = defineEmits<{
 
 
         <div class="details-container">
-            <div class="video-thumbnail" />
+            <div class="video-thumbnail">
+                <img :src="props.video.thumbnails.maxres.url" :alt="props.video.title" />
+            </div>
 
             <div class="video-info">
-                <h1>My title</h1>
+                <h1>{{ props.video.title }}</h1>
 
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores quo consequuntur libero aliquam perferendis obcaecati eum minima molestiae praesentium optio beatae, quos ducimus pariatur esse adipisci laudantium quae? Debitis, sint!</p>
+                {{ props.video.description }}
             </div>
         </div>
     </VueFinalModal>
@@ -57,13 +64,18 @@ const emit = defineEmits<{
     width: 492px;
 }
 
+.video-thumbnail img {
+    height: 100%;
+    width: 100%;
+}
+
 
 .video-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    height: 300px;
     max-width: 600px;
     min-width: 300px;
+    overflow: auto;
+    white-space: pre-wrap;
 }
 
 

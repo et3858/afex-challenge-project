@@ -16,14 +16,19 @@ import type { Video } from "./../types";
 const count = ref(0);
 const VIDEO_CARDS = Array.from(Array(5));
 const videos = ref<Video[]>([]);
+const selectedVideo = ref<Video | object>({});
 
 
 const { open, close } = useModal({
     component: VideoDetailsModal,
     attrs: {
         title: 'Hello World!',
+        video: selectedVideo,
         onConfirm() {
-            close()
+            close();
+        },
+        onClosed() {
+            selectedVideo.value = {};
         },
     },
     slots: {
@@ -33,6 +38,10 @@ const { open, close } = useModal({
 
 
 
+const handleOpenVideoClick = (video: Video) => {
+    selectedVideo.value = video;
+    open();
+};
 
 const fetchVideos = () => {
     // 
@@ -68,7 +77,7 @@ watch(videos, () => {
         <template v-for="video in videos" :key="video.id">
             <VideoCard
                 :video="video"
-                @click="() => open()"
+                @click="() => handleOpenVideoClick(video)"
             />
         </template>
     </div>
