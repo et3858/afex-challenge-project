@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { VueFinalModal } from 'vue-final-modal';
+import VideoPlayer from "./../VideoPlayer.vue";
 
 import type { Video } from "./../../types";
 
@@ -37,6 +38,8 @@ console.log(props.video)
 
         <div class="details-container">
             <div class="video-thumbnail">
+                <!--
+
                 <img :src="props.video.thumbnails.maxres.url" :alt="props.video.title" />
 
                 <svg width="62" height="65" viewBox="0 0 62 65" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,6 +60,9 @@ console.log(props.video)
                         </filter>
                     </defs>
                 </svg>
+                -->
+
+                <VideoPlayer :id="video.youtube_video_id" :title="video.title" />
             </div>
 
             <div class="video-info">
