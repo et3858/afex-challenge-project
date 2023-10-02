@@ -38,6 +38,25 @@ console.log(props.video)
         <div class="details-container">
             <div class="video-thumbnail">
                 <img :src="props.video.thumbnails.maxres.url" :alt="props.video.title" />
+
+                <svg width="62" height="65" viewBox="0 0 62 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_d_1_1423)">
+                        <ellipse cx="31" cy="28.5" rx="27" ry="28.5" fill="white"/>
+                        <path d="M31 0C16.0847 0 4 12.756 4 28.5C4 44.2439 16.0847 57 31 57C45.9153 57 58 44.2439 58 28.5C58 12.756 45.9153 0 31 0ZM43.5964 31.2581L24.4351 42.8649C22.7149 43.8762 20.5484 42.5776 20.5484 40.4516V16.5484C20.5484 14.4339 22.704 13.1238 24.4351 14.1351L43.5964 26.4314C45.3819 27.4887 45.3819 30.2123 43.5964 31.2581Z" fill="#FF0000"/>
+                    </g>
+                    <defs>
+                        <filter id="filter0_d_1_1423" x="0" y="0" width="62" height="65" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                            <feOffset dy="4"/>
+                            <feGaussianBlur stdDeviation="2"/>
+                            <feComposite in2="hardAlpha" operator="out"/>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1423"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1423" result="shape"/>
+                        </filter>
+                    </defs>
+                </svg>
             </div>
 
             <div class="video-info">
@@ -61,6 +80,7 @@ console.log(props.video)
     background-color: gray;
     flex-shrink: 0;
     height: 308px;
+    position: relative;
     width: 492px;
 }
 
@@ -69,6 +89,14 @@ console.log(props.video)
     width: 100%;
 }
 
+.video-thumbnail svg {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
 
 .video-info {
     height: 300px;
