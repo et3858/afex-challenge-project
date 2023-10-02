@@ -44,7 +44,6 @@ const handleOpenVideoClick = (video: Video) => {
 };
 
 const fetchVideos = () => {
-    // 
     const URL = "http://localhost:3000";
 
     fetch(URL)
@@ -67,10 +66,13 @@ watch(videos, () => {
 });
 
 
+const handleAddVideo = (video: Video) => {
+    videos.value.push(video);
+};
 </script>
 
 <template>
-    <Header />
+    <Header @addVideo="handleAddVideo" />
 
     <div class="videos-container">
         <!-- <template v-for="(e, key) in VIDEO_CARDS" :key="key"> -->

@@ -1,4 +1,46 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
+const urlText = ref<string>('');
+const emit = defineEmits(['addVideo']);
+
+
+const addYoutubeUrl = () => {
+    const URL = "http://localhost:3000";
+
+    fetch(URL, {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify({
+            url: urlText.value,
+        }),
+    })
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+
+            emit('addVideo', response.data);
+        })
+        .catch(error => {
+            console.warn(error);
+        });
+};
+
+
+const handleAddClick = () => {
+    if (urlText.value) {
+        addYoutubeUrl();
+    } else {
+        alert("Please, type the url to add first.");
+    }
+};
 </script>
 
 <template>
@@ -7,8 +49,8 @@
 
         <div class="form-group">
             <div class="input-group">
-                <input type="text" placeholder="Enter a video url">
-                <button type="button">Add</button>
+                <input type="text" v-model="urlText" placeholder="Enter a video url">
+                <button type="button" @click="handleAddClick">Add</button>
             </div>
         </div>
     </div>
