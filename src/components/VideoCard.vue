@@ -38,9 +38,12 @@ medium   -> 16:9
 .video-card {
     cursor: pointer;
     flex-shrink: 0;
-    height: 150px;
+    /* height: 150px; */
+    height: 100%;
     position: relative;
-    width: 263px;
+    /* width: 263px; */
+    /* max-width: 263px; */
+    width: 100%;
 }
 .video-card img {
     height: 100%;

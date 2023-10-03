@@ -106,25 +106,34 @@ const handleAddVideo = (video: Video) => {
 </script>
 
 <template>
-    <Header @addVideo="handleAddVideo" />
+    <div class="component-container">
 
-    <div class="videos-container">
-        <!-- <template v-for="(e, key) in VIDEO_CARDS" :key="key"> -->
-        <template v-for="video in videos" :key="video.id">
-            <VideoCard
-                :video="video"
-                :click="() => handleOpenVideoClick(video)"
-                :removeClick="() => handleConfirmRemoveVideoClick(video)"
-            />
-        </template>
+        <Header @addVideo="handleAddVideo" />
+
+        <div class="videos-container">
+            <!-- <template v-for="(e, key) in VIDEO_CARDS" :key="key"> -->
+            <template v-for="video in videos" :key="video.id">
+                <VideoCard
+                    :video="video"
+                    :click="() => handleOpenVideoClick(video)"
+                    :removeClick="() => handleConfirmRemoveVideoClick(video)"
+                />
+            </template>
+        </div>
     </div>
 </template>
 
 <style scoped>
-.videos-container {
-    display: flex;
-    flex-flow: wrap;
-    gap: 70px;
+.component-container {
+    margin: auto;
     max-width: 1000px;
+}
+
+
+.videos-container {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
 }
 </style>
