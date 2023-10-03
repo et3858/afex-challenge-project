@@ -1,31 +1,17 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { postRequest } from "./../services/fetching";
+
+import type { Video } from "./../types";
+
 
 const urlText = ref<string>('');
 const emit = defineEmits(['addVideo']);
 
 
 const addYoutubeUrl = () => {
-    const URL = "http://localhost:3000";
-
-    fetch(URL, {
-        method: "POST",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        redirect: "follow",
-        referrerPolicy: "no-referrer",
-        body: JSON.stringify({
-            url: urlText.value,
-        }),
-    })
-        .then(response => response.json())
-        .then(response => {
-            console.log(response);
-
+    postRequest({ url: urlText.value })
+        .then((response: { data: Video }) => {
             emit('addVideo', response.data);
         })
         .catch(error => {

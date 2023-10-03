@@ -5,6 +5,7 @@ import {
     watch,
 } from 'vue';
 import { useModal } from 'vue-final-modal';
+import { getRequest, deleteRequest } from "./../services/fetching";
 
 import Header from './Header.vue';
 import VideoCard from './VideoCard.vue';
@@ -60,9 +61,17 @@ const { open: open2, close: close2 } = useModal({
 
 
 const removeVideo = () => {
-    videos.value = videos.value.filter(v => {
-        return v.id !== selectedVideo.value.id;
-    });
+    const videoID: number = selectedVideo.value.id;
+
+    deleteRequest(`/${videoID}`)
+        .then(() => {
+            videos.value = videos.value.filter(v => {
+                return v.id !== videoID;
+            });
+        })
+        .catch(error => {
+            console.warn(error);
+        })
 };
 
 
@@ -78,11 +87,8 @@ const handleConfirmRemoveVideoClick = (video: Video) => {
 };
 
 const fetchVideos = () => {
-    const URL = "http://localhost:3000";
-
-    fetch(URL)
-        .then(response => response.json())
-        .then(response => {
+    getRequest()
+        .then((response: { data: [Video] }) => {
             videos.value = response.data;
         })
         .catch(error => {
