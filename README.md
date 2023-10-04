@@ -51,4 +51,31 @@ By default, the project will be running at http://localhost:4173
 The same procedure: the app will ask you to put your name before playing the game.
 
 
+## Screenshots
+
+### List all videos
+
+![Picture 1](images/picture1.png)
+
+### Add a new video
+
+![Picture 2](images/picture2.png)
+
+### Update the list
+
+![Picture 3](images/picture3.png)
+
+### Go to details of selected video
+
+![Picture 4](images/picture4.png)
+
+### Remove the video
+
+![Picture 5](images/picture5.png)
+
+### Update the list with the video removed
+
+![Picture 6](images/picture6.png)
+
+
 Happy coding.
