@@ -1,18 +1,54 @@
-# Vue 3 + TypeScript + Vite
+# AFEX challenge
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is a project as a part of AFEX's challenge. It consist in having a list of YouTube videos saved in its API and edit that list adding or remove a video.
+It uses VueJS 3 and TypeScript in Vite.
 
-## Recommended IDE Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Steps
 
-## Type Support For `.vue` Imports in TS
+### Install NodeJS and npm
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- Having NodeJS v16.x and above installed in your computer. You can get NodeJS [in this link](https://nodejs.org/en/download)
+- Having npm v8.x and above installed in your computer.
+- Having a terminal (either PowerShell or console prompt if you use Windows).
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+You can get the installation guide on Windows and Mac [in this link](https://radixweb.com/blog/installing-npm-and-nodejs-on-windows-and-mac)
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+
+### Download the project
+
+In this repository, go to "Code" button, then click on "Download ZIP" link in "Local" tab. Once it's downloaded, unzip the file into your preferred location and go to the project folder through the terminal.
+
+Example:
+```sh
+cd path/to/the/project/afex-challenge-project
+```
+
+### Install modules and dependencies
+
+```sh
+npm install
+```
+
+### Run in development mode
+
+```sh
+npm run dev
+```
+
+By default, the project will be running at http://localhost:5173
+
+Once you enter, the app will ask you to put your name before playing the game.
+
+### Compile and run in production mode
+
+```sh
+npm run build && npm run preview
+```
+
+By default, the project will be running at http://localhost:4173
+
+The same procedure: the app will ask you to put your name before playing the game.
+
+
+Happy coding.
