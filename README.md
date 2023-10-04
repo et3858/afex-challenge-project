@@ -85,4 +85,9 @@ The same procedure: the app will ask you to put your name before playing the gam
 ![Picture 6](images/picture6.png)
 
 
+## Demo
+
+https://main.d3mvr8wu58yjcv.amplifyapp.com/
+
+
 Happy coding.
