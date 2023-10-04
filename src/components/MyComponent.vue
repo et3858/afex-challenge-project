@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import {
-    onMounted,
-    ref,
-    watch,
-} from 'vue';
+import { onMounted, ref } from 'vue';
 import { useModal } from 'vue-final-modal';
 import { getRequest, deleteRequest } from "./../services/fetching";
 
@@ -21,13 +17,13 @@ const videos = ref<Video[]>([]);
 const selectedVideo = ref<Video | object>({});
 
 
-const { open, close } = useModal({
+const { open: openModal1, close: closeModal1 } = useModal({
     component: VideoDetailsModal,
     attrs: {
         title: 'Hello World!',
         video: selectedVideo,
         onConfirm() {
-            close();
+            closeModal1();
         },
         onClosed() {
             selectedVideo.value = {};
@@ -36,16 +32,16 @@ const { open, close } = useModal({
 });
 
 
-const { open: open2, close: close2 } = useModal({
+const { open: openModal2, close: closeModal2 } = useModal({
     component: ConfirmModal,
     attrs: {
         confirmButtonText: "Remove",
         onConfirm() {
             removeVideo();
-            close2();
+            closeModal2();
         },
         onCancel() {
-            close2();
+            closeModal2();
         },
         onClosed() {
             selectedVideo.value = {};
@@ -76,13 +72,13 @@ const removeVideo = () => {
 
 const handleOpenVideoClick = (video: Video) => {
     selectedVideo.value = video;
-    open();
+    openModal1();
 };
 
 
 const handleConfirmRemoveVideoClick = (video: Video) => {
     selectedVideo.value = video;
-    open2();
+    openModal2();
 };
 
 const fetchVideos = () => {
@@ -97,11 +93,6 @@ const fetchVideos = () => {
 
 onMounted(() => {
     fetchVideos();
-});
-
-
-watch(videos, () => {
-    console.log(videos.value)
 });
 
 
