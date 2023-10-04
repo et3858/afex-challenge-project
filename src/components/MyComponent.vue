@@ -11,8 +11,6 @@ import ConfirmModal from "./modals/ConfirmModal.vue";
 import type { Video } from "./../types";
 
 
-const count = ref(0);
-const VIDEO_CARDS = Array.from(Array(5));
 const videos = ref<Video[]>([]);
 const selectedVideo = ref<Video | object>({});
 
@@ -115,7 +113,6 @@ const handleAddVideo = (video: Video) => {
         <Header @addVideo="handleAddVideo" />
 
         <div class="videos-container">
-            <!-- <template v-for="(e, key) in VIDEO_CARDS" :key="key"> -->
             <template v-for="video in videos" :key="video.id">
                 <VideoCard
                     :video="video"

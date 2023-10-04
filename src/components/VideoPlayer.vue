@@ -2,8 +2,6 @@
 import LiteYouTubeEmbed from 'vue-lite-youtube-embed';
 import 'vue-lite-youtube-embed/style.css';
 
-import type { Video } from "./../types";
-
 interface IProps {
     id: string,
     title: string,

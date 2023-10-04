@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useModal } from 'vue-final-modal';
 import RemoveButton from "./RemoveButton.vue";
 import type { Video } from "./../types";
 
@@ -38,13 +37,11 @@ medium   -> 16:9
 .video-card {
     cursor: pointer;
     flex-shrink: 0;
-    /* height: 150px; */
     height: 100%;
     position: relative;
-    /* width: 263px; */
-    /* max-width: 263px; */
     width: 100%;
 }
+
 .video-card img {
     height: 100%;
     width: 100%
