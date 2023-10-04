@@ -11,6 +11,7 @@ It uses VueJS 3 and TypeScript in Vite.
 - Having NodeJS v16.x and above installed in your computer. You can get NodeJS [in this link](https://nodejs.org/en/download)
 - Having npm v8.x and above installed in your computer.
 - Having a terminal (either PowerShell or console prompt if you use Windows).
+- Having the API so the app can consume its resources.
 
 You can get the installation guide on Windows and Mac [in this link](https://radixweb.com/blog/installing-npm-and-nodejs-on-windows-and-mac)
 
@@ -28,6 +29,12 @@ cd path/to/the/project/afex-challenge-project
 
 ```sh
 npm install
+```
+
+### Copy and rename the .env.example file to .env and set the API url
+
+```
+VITE_API_URL="YOUR_API_URL"
 ```
 
 ### Run in development mode
