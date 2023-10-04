@@ -11,7 +11,7 @@ It uses VueJS 3 and TypeScript in Vite.
 - Having NodeJS v16.x and above installed in your computer. You can get NodeJS [in this link](https://nodejs.org/en/download)
 - Having npm v8.x and above installed in your computer.
 - Having a terminal (either PowerShell or console prompt if you use Windows).
-- Having the API so the app can consume its resources.
+- Having the API so the app can consume its resources: https://github.com/et3858/afex-api-project.
 
 You can get the installation guide on Windows and Mac [in this link](https://radixweb.com/blog/installing-npm-and-nodejs-on-windows-and-mac)
 
@@ -45,8 +45,6 @@ npm run dev
 
 By default, the project will be running at http://localhost:5173
 
-Once you enter, the app will ask you to put your name before playing the game.
-
 ### Compile and run in production mode
 
 ```sh
@@ -54,9 +52,6 @@ npm run build && npm run preview
 ```
 
 By default, the project will be running at http://localhost:4173
-
-The same procedure: the app will ask you to put your name before playing the game.
-
 
 ## Screenshots
 
