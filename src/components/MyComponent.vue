@@ -107,7 +107,11 @@ watch(videos, () => {
 
 
 const handleAddVideo = (video: Video) => {
-    videos.value.push(video);
+    const videoIndex = videos.value.findIndex(v => v.youtube_video_id === video.youtube_video_id);
+
+    if (videoIndex < 0) {
+        videos.value.push(video);
+    }
 };
 </script>
 

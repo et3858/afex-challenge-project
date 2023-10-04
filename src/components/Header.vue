@@ -5,7 +5,7 @@ import { postRequest } from "./../services/fetching";
 import type { Video } from "./../types";
 
 
-const urlText = ref<string>('');
+const urlText = ref<string>("");
 const emit = defineEmits(['addVideo']);
 
 
@@ -13,6 +13,7 @@ const addYoutubeUrl = () => {
     postRequest({ url: urlText.value })
         .then((response: { data: Video }) => {
             emit('addVideo', response.data);
+            urlText.value = "";
         })
         .catch(error => {
             console.warn(error);
