@@ -95,6 +95,7 @@ const emit = defineEmits<{
     position: relative;
     margin-left: 1rem;
     margin-right: 1rem;
+    max-width: 1000px;
     min-width: 200px;
 }
 
