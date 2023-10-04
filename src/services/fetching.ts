@@ -1,4 +1,4 @@
-const URL_SOURCE = "http://localhost:3000";
+const URL_SOURCE = import.meta.env.VITE_API_URL;
 
 
 export function getRequest() {
