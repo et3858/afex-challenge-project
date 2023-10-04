@@ -15,8 +15,8 @@ const addYoutubeUrl = () => {
             emit('addVideo', response.data);
             urlText.value = "";
         })
-        .catch(error => {
-            console.warn(error);
+        .catch(response => {
+            alert(response.error.msg)
         });
 };
 

@@ -33,9 +33,6 @@ const { open, close } = useModal({
             selectedVideo.value = {};
         },
     },
-    slots: {
-        default: '<p>UseModal: The content of the modal</p>',
-    },
 });
 
 
@@ -55,7 +52,7 @@ const { open: open2, close: close2 } = useModal({
         },
     },
     slots: {
-        default: '<h1>Are you sure you want to remove this video</h1>',
+        default: '<h1>Are you sure you want to remove this video?</h1>',
     },
 });
 
@@ -68,10 +65,12 @@ const removeVideo = () => {
             videos.value = videos.value.filter(v => {
                 return v.id !== videoID;
             });
+
+            alert("Video removed");
         })
-        .catch(error => {
-            console.warn(error);
-        })
+        .catch(response => {
+            alert(response.error.msg);
+        });
 };
 
 
@@ -111,6 +110,10 @@ const handleAddVideo = (video: Video) => {
 
     if (videoIndex < 0) {
         videos.value.push(video);
+
+        alert("Video added");
+    } else {
+        alert("Video already exists");
     }
 };
 </script>

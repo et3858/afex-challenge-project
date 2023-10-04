@@ -29,12 +29,23 @@ export function postRequest(data: object = {}) {
             referrerPolicy: "no-referrer",
             body: JSON.stringify(data),
         })
-            .then(response => response.json())
+            // .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    return Promise.reject(response);
+                }
+
+                return response.json();
+            })
             .then(response => {
                 resolve(response);
             })
-            .catch(error => {
-                reject(error);
+            .catch(response => {
+                if (!response?.status) {
+                    return reject({ error: { msg: "You are disconnected. Try it later." } });
+                }
+
+                response.json().then((data: {[key: string]: any}) => reject(data));
             });
     })
 }
@@ -48,8 +59,12 @@ export function deleteRequest(path: string = "") {
             .then(() => {
                 resolve();
             })
-            .catch(error => {
-                reject(error);
+            .catch(response => {
+                if (!response?.status) {
+                    return reject({ error: { msg: "You are disconnected. Try it later." } });
+                }
+
+                reject(response);
             });
     });
 }
