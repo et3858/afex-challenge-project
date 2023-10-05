@@ -1,9 +1,24 @@
 const URL_SOURCE = import.meta.env.VITE_API_URL;
 
 
+const HEADERS = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+};
+
+
 export function getRequest() {
     return new Promise((resolve, reject) => {
-        fetch(URL_SOURCE)
+        fetch(URL_SOURCE, {
+            method: "GET",
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: HEADERS,
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+        })
             .then(response => response.json())
             .then(response => {
                 resolve(response);
@@ -22,9 +37,7 @@ export function postRequest(data: object = {}) {
             mode: "cors",
             cache: "no-cache",
             credentials: "same-origin",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: HEADERS,
             redirect: "follow",
             referrerPolicy: "no-referrer",
             body: JSON.stringify(data),
