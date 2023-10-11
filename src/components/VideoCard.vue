@@ -30,6 +30,8 @@ medium   -> 16:9
             :alt="props.video.title"
             @click="click"
         />
+
+        <span class="video-duration" v-if="props.video.duration">{{props.video.duration}}</span>
     </div>
 </template>
 
@@ -45,5 +47,18 @@ medium   -> 16:9
 .video-card img {
     height: 100%;
     width: 100%
+}
+
+.video-card .video-duration {
+    background-color: black;
+    border-radius: 4px;
+    bottom: 8px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 1px 4px;
+    position: absolute;
+    right: 9px;
 }
 </style>

@@ -41,7 +41,11 @@ const emit = defineEmits<{
             <div class="video-info">
                 <h1>{{ props.video.title }}</h1>
 
-                {{ props.video.description }}
+                <div class="video-duration" v-if="props.video.duration">
+                    <strong>Duration:</strong> {{ props.video.duration }}
+                </div>
+
+                {{props.video.description}}
             </div>
         </div>
     </VueFinalModal>
@@ -78,6 +82,10 @@ const emit = defineEmits<{
     overflow-y: auto;
     white-space: pre-wrap;
     word-wrap: break-word;
+}
+
+.details-container .video-info .video-duration {
+    margin: 14px 0;
 }
 
 .confirm-modal {
