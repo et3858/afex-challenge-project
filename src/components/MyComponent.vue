@@ -18,7 +18,6 @@ const selectedVideo = ref<Video | object>({});
 const { open: openModal1, close: closeModal1 } = useModal({
     component: VideoDetailsModal,
     attrs: {
-        title: 'Hello World!',
         video: selectedVideo,
         onConfirm() {
             closeModal1();

@@ -7,7 +7,6 @@ import type { Video } from "./../../types";
 
 
 interface IProps {
-    title?: string,
     video: Video,
 };
 
