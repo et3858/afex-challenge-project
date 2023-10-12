@@ -40,7 +40,13 @@ const emit = defineEmits<{
             <div class="video-info">
                 <h1>{{ props.video.title }}</h1>
 
-                <div class="video-duration" v-if="props.video.duration">
+                <div class="video-live" v-if="props.video.live_status === 'live'">
+                    <strong>LIVE</strong>
+                </div>
+                <div class="video-upcoming" v-else-if="props.video.live_status === 'upcoming'">
+                    <strong>UPCOMING</strong>
+                </div>
+                <div class="video-duration" v-else-if="props.video.duration">
                     <strong>Duration:</strong> {{ props.video.duration }}
                 </div>
 
@@ -83,8 +89,26 @@ const emit = defineEmits<{
     word-wrap: break-word;
 }
 
-.details-container .video-info .video-duration {
+.details-container .video-info .video-duration,
+.details-container .video-info .video-live,
+.details-container .video-info .video-upcoming {
     margin: 14px 0;
+}
+
+.details-container .video-info .video-live strong,
+.details-container .video-info .video-upcoming strong {
+    border-radius: 4px;
+    color: white;
+    font-size: 0.8rem;
+    padding: 4px;
+}
+
+.details-container .video-info .video-live strong {
+    background-color: red;
+}
+
+.details-container .video-info .video-upcoming strong {
+    background-color: black;
 }
 
 .confirm-modal {

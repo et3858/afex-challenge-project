@@ -31,7 +31,9 @@ medium   -> 16:9
             @click="click"
         />
 
-        <span class="video-duration" v-if="props.video.duration">{{props.video.duration}}</span>
+        <span class="video-live" v-if="props.video.live_status === 'live'">LIVE</span>
+        <span class="video-upcoming" v-else-if="props.video.live_status === 'upcoming'">UPCOMING</span>
+        <span class="video-duration" v-else-if="props.video.duration">{{props.video.duration}}</span>
     </div>
 </template>
 
@@ -49,16 +51,29 @@ medium   -> 16:9
     width: 100%
 }
 
-.video-card .video-duration {
-    background-color: black;
+.video-card .video-duration,
+.video-card .video-live,
+.video-card .video-upcoming {
     border-radius: 4px;
     bottom: 8px;
     color: white;
     font-size: 0.8rem;
     font-weight: bold;
-    letter-spacing: 1px;
     padding: 1px 4px;
     position: absolute;
     right: 9px;
+}
+
+.video-card .video-duration {
+    background-color: black;
+    letter-spacing: 1px;
+}
+
+.video-card .video-live {
+    background-color: red;
+}
+
+.video-card .video-upcoming {
+    background-color: black;
 }
 </style>
